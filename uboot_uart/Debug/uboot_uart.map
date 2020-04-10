@@ -1,0 +1,386 @@
+******************************************************************************
+                  TI ARM Linker PC v16.9.1                     
+******************************************************************************
+>> Linked Tue Feb 26 11:47:38 2019
+
+OUTPUT FILE NAME:   <uboot_uart.out>
+ENTRY POINT SYMBOL: "Entry"  address: 8001e02c
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  appmain_code          80000000   00000100  00000004  000000fc  RWIX
+  uboot_uart            8001c000   00003000  00002150  00000eb0  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+80000000    80000000    00000004   00000004    r-x
+  80000000    80000000    00000004   00000004    r-x .app_main
+8001c000    8001c000    00001b2c   00001b2c    r-x
+  8001c000    8001c000    00001b2c   00001b2c    r-x .text
+8001db2c    8001db2c    00000500   00000000    rw-
+  8001db2c    8001db2c    00000500   00000000    rw- .stack
+8001e02c    8001e02c    000000f0   000000f0    r-x
+  8001e02c    8001e02c    00000094   00000094    r-x .init
+  8001e0c0    8001e0c0    0000005c   0000005c    r-- .const
+8001e11c    8001e11c    00000020   00000000    rw-
+  8001e11c    8001e11c    00000020   00000000    rw- .bss
+8001e140    8001e140    00000014   00000014    r--
+  8001e140    8001e140    00000014   00000014    r-- .cinit
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.app_main 
+*          0    80000000    00000004     
+                  80000000    00000004     main.obj (.app_main)
+
+.text      0    8001c000    00001b2c     
+                  8001c000    0000065c     spi.obj (.text)
+                  8001c65c    000005f0     drivers.lib : uart.obj (.text)
+                  8001cc4c    000001f4     main.obj (.text)
+                  8001ce40    00000188     spi_mem.obj (.text)
+                  8001cfc8    00000180     rtsv5_A_le_eabi.lib : memcpy32.obj (.text)
+                  8001d148    00000154     drivers.lib : psc.obj (.text)
+                  8001d29c    00000144     platform.lib : uart.obj (.text)
+                  8001d3e0    00000124     device.obj (.text)
+                  8001d504    000000f0     rtsv5_A_le_eabi.lib : u_div32.obj (.text)
+                  8001d5f4    000000ec     spiwriter.obj (.text)
+                  8001d6e0    000000b0     rtsv5_A_le_eabi.lib : memset32.obj (.text)
+                  8001d790    000000b0     system_config.lib : startup.obj (.text)
+                  8001d840    000000a0     rtsv5_A_le_eabi.lib : autoinit.obj (.text)
+                  8001d8e0    00000088     dev_uart.obj (.text)
+                  8001d968    00000088     rtsv5_A_le_eabi.lib : cpy_tbl.obj (.text)
+                  8001d9f0    0000007c     system_config.lib : exceptionhandler.obj (.text)
+                  8001da6c    00000060                       : cpu.obj (.text)
+                  8001dacc    00000048     platform.lib : syscfg.obj (.text)
+                  8001db14    00000010     rtsv5_A_le_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
+                  8001db24    00000004                         : i_div0.obj (.text)
+                  8001db28    00000004                         : startup.obj (.text)
+
+.init      0    8001e02c    00000094     
+                  8001e02c    00000094     system_config.lib : init.obj (.text)
+
+.stack     0    8001db2c    00000500     UNINITIALIZED
+                  8001db2c    00000500     --HOLE--
+
+.const     0    8001e0c0    0000005c     
+                  8001e0c0    00000038     system_config.lib : startup.obj (.const:vecTbl)
+                  8001e0f8    00000014     device_spi.obj (.const:DEVICE_SPI_MEM_params)
+                  8001e10c    00000008     device_spi.obj (.const)
+                  8001e114    00000004     main.obj (.const:.string:$P$T0$1)
+                  8001e118    00000004     device_spi.obj (.const:DEVICE_SPI_config)
+
+.bss       0    8001e11c    00000020     UNINITIALIZED
+                  8001e11c    00000014     (.common:gSPIInfo)
+                  8001e130    00000008     (.common:gSPIMemInfo)
+                  8001e138    00000004     spiwriter.obj (.bss)
+
+.cinit     0    8001e140    00000014     
+                  8001e140    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  8001e148    00000004     (__TI_handler_table)
+                  8001e14c    00000008     (__TI_cinit_table)
+
+MODULE SUMMARY
+
+       Module                 code   ro data   rw data
+       ------                 ----   -------   -------
+    .\
+       main.obj               504    4         0      
+       dev_uart.obj           136    0         0      
+    +--+----------------------+------+---------+---------+
+       Total:                 640    4         0      
+                                                      
+    .\spi_flash\
+       spi.obj                1628   0         20     
+       spi_mem.obj            392    0         8      
+       device.obj             292    0         0      
+       spiwriter.obj          236    0         4      
+       device_spi.obj         0      32        0      
+    +--+----------------------+------+---------+---------+
+       Total:                 2548   32        32     
+                                                      
+    C:/ti/OMAPL138_StarterWare_1_10_04_01/binary/armv5/cgt_ccs/omapl138/evmOMAPL138/platform/Debug/platform.lib
+       uart.obj               324    0         0      
+       syscfg.obj             72     0         0      
+    +--+----------------------+------+---------+---------+
+       Total:                 396    0         0      
+                                                      
+    C:/ti/OMAPL138_StarterWare_1_10_04_01/binary/armv5/cgt_ccs/omapl138/system_config/Debug/system_config.lib
+       startup.obj            176    56        0      
+       init.obj               148    0         0      
+       exceptionhandler.obj   124    0         0      
+       cpu.obj                96     0         0      
+    +--+----------------------+------+---------+---------+
+       Total:                 544    56        0      
+                                                      
+    C:\ti\OMAPL138_StarterWare_1_10_04_01\binary\armv5\cgt_ccs\omapl138\drivers\Debug\drivers.lib
+       uart.obj               1520   0         0      
+       psc.obj                340    0         0      
+    +--+----------------------+------+---------+---------+
+       Total:                 1860   0         0      
+                                                      
+    C:\ti\ti-cgt-arm_16.9.1.LTS\lib\rtsv5_A_le_eabi.lib
+       memcpy32.obj           384    0         0      
+       u_div32.obj            240    0         0      
+       memset32.obj           176    0         0      
+       autoinit.obj           160    0         0      
+       cpy_tbl.obj            136    0         0      
+       copy_zero_init.obj     16     0         0      
+       i_div0.obj             4      0         0      
+       startup.obj            4      0         0      
+    +--+----------------------+------+---------+---------+
+       Total:                 1120   0         0      
+                                                      
+       Stack:                 0      0         1280   
+       Linker Generated:      0      20        0      
+    +--+----------------------+------+---------+---------+
+       Grand Total:           7108   112       1312   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 8001e14c records: 1, size/record: 8, table size: 8
+	.bss: load addr=8001e140, load size=00000008 bytes, run addr=8001e11c, run size=00000020 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 8001e148 records: 1, size/record: 4, table size: 4
+	index: 0, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                     
+-------   ----                     
+8001d9f4  ADDR_HIPVR1              
+8001da54  AbortHandler             
+8001da88  CPUAbortHandler          
+8001da6c  CPUSwitchToPrivilegedMode
+8001da74  CPUSwitchToUserMode      
+8001daac  CPUfiqd                  
+8001dabc  CPUfiqe                  
+8001da8c  CPUirqd                  
+8001da9c  CPUirqe                  
+8001d4b4  DEVICE_SPIInit           
+8001e0f8  DEVICE_SPI_MEM_params    
+8001e118  DEVICE_SPI_config        
+8001e02c  Entry                    
+8001da38  FIQHandler               
+8001da1c  IRQHandler               
+8001d8e0  InitUART2                
+8001d148  PSCModuleControl         
+UNDEFED   SHT$$INIT_ARRAY$$Base    
+UNDEFED   SHT$$INIT_ARRAY$$Limit   
+8001ce40  SPI_MEM_open             
+8001ceb0  SPI_MEM_readBytes        
+8001c4d0  SPI_disableCS            
+8001c480  SPI_enableCS             
+8001c034  SPI_open                 
+8001c128  SPI_readBytes            
+8001c0e4  SPI_reset                
+8001c218  SPI_writeBytes           
+8001c2fc  SPI_xferBytes            
+8001c3fc  SPI_xferOneChar          
+8001d9fc  SWIHandler               
+8001dae8  SysCfgRegistersLock      
+8001dacc  SysCfgRegistersUnlock    
+8001cb4c  UARTBreakCtl             
+8001ca30  UARTCharGet              
+8001c9f8  UARTCharGetNonBlocking   
+8001ca68  UARTCharPut              
+8001c9b4  UARTCharPutNonBlocking   
+8001c964  UARTCharsAvail           
+8001c728  UARTConfigGetExpClk      
+8001c65c  UARTConfigSetExpClk      
+8001c824  UARTDMADisable           
+8001c800  UARTDMAEnable            
+8001c8d0  UARTDisable              
+8001c8b4  UARTEnable               
+8001c914  UARTFIFODisable          
+8001c8f8  UARTFIFOEnable           
+8001c7d8  UARTFIFOLevelSet         
+8001cadc  UARTIntDisable           
+8001caac  UARTIntEnable            
+8001cb0c  UARTIntStatus            
+8001cbdc  UARTModemControlClear    
+8001cc0c  UARTModemControlGet      
+8001cb98  UARTModemControlSet      
+8001cc28  UARTModemStatusGet       
+8001c88c  UARTParityModeGet        
+8001c848  UARTParityModeSet        
+8001d29c  UARTPinMuxSetup          
+8001c998  UARTRxErrorGet           
+8001c930  UARTSpaceAvail           
+8001da54  UndefInstHandler         
+8001e02c  __STACK_END              
+00000500  __STACK_SIZE             
+8001e14c  __TI_CINIT_Base          
+8001e154  __TI_CINIT_Limit         
+8001e148  __TI_Handler_Table_Base  
+8001e14c  __TI_Handler_Table_Limit 
+8001d840  __TI_auto_init           
+ffffffff  __TI_pprof_out_hndl      
+ffffffff  __TI_prof_data_size      
+ffffffff  __TI_prof_data_start     
+8001e140  __TI_static_base__       
+8001db14  __TI_zero_init           
+8001db24  __aeabi_idiv0            
+8001d6e0  __aeabi_memclr           
+8001d6e0  __aeabi_memclr4          
+8001d6e0  __aeabi_memclr8          
+8001cfc8  __aeabi_memcpy           
+8001cfc8  __aeabi_memcpy4          
+8001cfc8  __aeabi_memcpy8          
+8001d6e4  __aeabi_memset           
+8001d6e4  __aeabi_memset4          
+8001d6e4  __aeabi_memset8          
+8001d504  __aeabi_uidiv            
+8001d504  __aeabi_uidivmod         
+ffffffff  __binit__                
+ffffffff  __c_args__               
+8001db2c  __stack                  
+8001db28  _system_post_cinit       
+80000000  app_main                 
+ffffffff  binit                    
+8001e13c  bss_end                  
+8001e11c  bss_start                
+8001d968  copy_in                  
+8001c000  delay                    
+8001e11c  gSPIInfo                 
+8001e130  gSPIMemInfo              
+8001d63c  geArmCode                
+8001d670  geDownlodCode            
+8001d6a4  geDspCode                
+8001d618  gelengthCode             
+8001e110  hDEVICE_SPI_MEM_params   
+8001e10c  hDEVICE_SPI_config       
+8001cc4c  main                     
+8001cfc8  memcpy                   
+8001d6f0  memset                   
+8001d5f4  spi_witer_init           
+8001d790  start_boot               
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                     
+-------   ----                     
+00000500  __STACK_SIZE             
+80000000  app_main                 
+8001c000  delay                    
+8001c034  SPI_open                 
+8001c0e4  SPI_reset                
+8001c128  SPI_readBytes            
+8001c218  SPI_writeBytes           
+8001c2fc  SPI_xferBytes            
+8001c3fc  SPI_xferOneChar          
+8001c480  SPI_enableCS             
+8001c4d0  SPI_disableCS            
+8001c65c  UARTConfigSetExpClk      
+8001c728  UARTConfigGetExpClk      
+8001c7d8  UARTFIFOLevelSet         
+8001c800  UARTDMAEnable            
+8001c824  UARTDMADisable           
+8001c848  UARTParityModeSet        
+8001c88c  UARTParityModeGet        
+8001c8b4  UARTEnable               
+8001c8d0  UARTDisable              
+8001c8f8  UARTFIFOEnable           
+8001c914  UARTFIFODisable          
+8001c930  UARTSpaceAvail           
+8001c964  UARTCharsAvail           
+8001c998  UARTRxErrorGet           
+8001c9b4  UARTCharPutNonBlocking   
+8001c9f8  UARTCharGetNonBlocking   
+8001ca30  UARTCharGet              
+8001ca68  UARTCharPut              
+8001caac  UARTIntEnable            
+8001cadc  UARTIntDisable           
+8001cb0c  UARTIntStatus            
+8001cb4c  UARTBreakCtl             
+8001cb98  UARTModemControlSet      
+8001cbdc  UARTModemControlClear    
+8001cc0c  UARTModemControlGet      
+8001cc28  UARTModemStatusGet       
+8001cc4c  main                     
+8001ce40  SPI_MEM_open             
+8001ceb0  SPI_MEM_readBytes        
+8001cfc8  __aeabi_memcpy           
+8001cfc8  __aeabi_memcpy4          
+8001cfc8  __aeabi_memcpy8          
+8001cfc8  memcpy                   
+8001d148  PSCModuleControl         
+8001d29c  UARTPinMuxSetup          
+8001d4b4  DEVICE_SPIInit           
+8001d504  __aeabi_uidiv            
+8001d504  __aeabi_uidivmod         
+8001d5f4  spi_witer_init           
+8001d618  gelengthCode             
+8001d63c  geArmCode                
+8001d670  geDownlodCode            
+8001d6a4  geDspCode                
+8001d6e0  __aeabi_memclr           
+8001d6e0  __aeabi_memclr4          
+8001d6e0  __aeabi_memclr8          
+8001d6e4  __aeabi_memset           
+8001d6e4  __aeabi_memset4          
+8001d6e4  __aeabi_memset8          
+8001d6f0  memset                   
+8001d790  start_boot               
+8001d840  __TI_auto_init           
+8001d8e0  InitUART2                
+8001d968  copy_in                  
+8001d9f4  ADDR_HIPVR1              
+8001d9fc  SWIHandler               
+8001da1c  IRQHandler               
+8001da38  FIQHandler               
+8001da54  AbortHandler             
+8001da54  UndefInstHandler         
+8001da6c  CPUSwitchToPrivilegedMode
+8001da74  CPUSwitchToUserMode      
+8001da88  CPUAbortHandler          
+8001da8c  CPUirqd                  
+8001da9c  CPUirqe                  
+8001daac  CPUfiqd                  
+8001dabc  CPUfiqe                  
+8001dacc  SysCfgRegistersUnlock    
+8001dae8  SysCfgRegistersLock      
+8001db14  __TI_zero_init           
+8001db24  __aeabi_idiv0            
+8001db28  _system_post_cinit       
+8001db2c  __stack                  
+8001e02c  Entry                    
+8001e02c  __STACK_END              
+8001e0f8  DEVICE_SPI_MEM_params    
+8001e10c  hDEVICE_SPI_config       
+8001e110  hDEVICE_SPI_MEM_params   
+8001e118  DEVICE_SPI_config        
+8001e11c  bss_start                
+8001e11c  gSPIInfo                 
+8001e130  gSPIMemInfo              
+8001e13c  bss_end                  
+8001e140  __TI_static_base__       
+8001e148  __TI_Handler_Table_Base  
+8001e14c  __TI_CINIT_Base          
+8001e14c  __TI_Handler_Table_Limit 
+8001e154  __TI_CINIT_Limit         
+ffffffff  __TI_pprof_out_hndl      
+ffffffff  __TI_prof_data_size      
+ffffffff  __TI_prof_data_start     
+ffffffff  __binit__                
+ffffffff  __c_args__               
+ffffffff  binit                    
+UNDEFED   SHT$$INIT_ARRAY$$Base    
+UNDEFED   SHT$$INIT_ARRAY$$Limit   
+
+[107 symbols]

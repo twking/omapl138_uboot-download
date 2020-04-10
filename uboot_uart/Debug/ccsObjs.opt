@@ -1,0 +1,1 @@
+"./spi_flash/spiwriter.obj" "./spi_flash/spi_mem.obj" "./spi_flash/spi.obj" "./spi_flash/device_spi.obj" "./spi_flash/device.obj" "./main.obj" "./dev_uart.obj" "../OMAPL138.cmd" -lplatform.lib -l"C:\ti\OMAPL138_StarterWare_1_10_04_01\binary\armv5\cgt_ccs\omapl138\drivers\Debug\drivers.lib" -lsystem_config.lib -l"libc.a" 

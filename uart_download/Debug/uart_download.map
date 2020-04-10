@@ -1,0 +1,925 @@
+******************************************************************************
+                  TI ARM Linker PC v16.9.1                     
+******************************************************************************
+>> Linked Fri Sep 06 11:41:08 2019
+
+OUTPUT FILE NAME:   <uart_download.out>
+ENTRY POINT SYMBOL: "Entry"  address: 80000000
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  L2_DOWNLODD           11800000   00040000  00000000  00040000  RWIX
+  entrypoin             80000000   00000100  00000094  0000006c  RWIX
+  SHARED_RAM            80000100   0001bf00  0000f9cc  0000c534  RWIX
+  uboot_uart            8001c000   00003000  00000000  00003000  RWIX
+  L2_RAM                8001f000   00001000  00000000  00001000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+80000000    80000000    00000094   00000094    r-x
+  80000000    80000000    00000094   00000094    r-x .init
+80000100    80000100    0000c010   0000c010    r-x
+  80000100    80000100    0000c010   0000c010    r-x .text
+8000c110    8000c110    000031d0   00000000    rw-
+  8000c110    8000c110    000011d0   00000000    rw- .bss
+  8000d2e0    8000d2e0    00001000   00000000    rw- .stack
+  8000e2e0    8000e2e0    00001000   00000000    rw- .sysmem
+8000f2e0    8000f2e0    000004e8   000004e8    r--
+  8000f2e0    8000f2e0    000004e8   000004e8    r-- .const
+8000f7c8    8000f7c8    0000023c   00000000    rw-
+  8000f7c8    8000f7c8    0000023c   00000000    rw- .data
+8000fa08    8000fa08    000000c8   000000c8    r--
+  8000fa08    8000fa08    000000c8   000000c8    r-- .cinit
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.init      0    80000000    00000094     
+                  80000000    00000094     system_config.lib : init.obj (.text)
+
+.text      0    80000100    0000c010     
+                  80000100    00001a20     rtsv5_A_le_eabi.lib : _printfi.obj (.text)
+                  80001b20    00000f3c     device.obj (.text)
+                  80002a5c    00000e20     rtsv5_A_le_eabi.lib : _scanfi.obj (.text)
+                  8000387c    00000c60     utils.lib : uartStdio.obj (.text)
+                  800044dc    00000acc     spiwriter.obj (.text)
+                  80004fa8    00000ab0     spi_mem.obj (.text)
+                  80005a58    000006ac     spi.obj (.text)
+                  80006104    0000063c     rtsv5_A_le_eabi.lib : memory.obj (.text)
+                  80006740    000005f0     drivers.lib : uart.obj (.text)
+                  80006d30    00000560     rtsv5_A_le_eabi.lib : lowlev.obj (.text)
+                  80007290    00000550                         : trgdrv.obj (.text)
+                  800077e0    000004c0     xmodem.obj (.text)
+                  80007ca0    00000400     cmd.obj (.text)
+                  800080a0    000003ac     main.obj (.text)
+                  8000844c    00000340     rtsv5_A_le_eabi.lib : strtod.obj (.text)
+                  8000878c    00000310                         : fscanf.obj (.text)
+                  80008a9c    000002dc                         : fopen.obj (.text)
+                  80008d78    000002d0                         : strtoll.obj (.text)
+                  80009048    000002b8                         : ull_div32.obj (.text)
+                  80009300    00000284     debug.obj (.text)
+                  80009584    00000244     rtsv5_A_le_eabi.lib : strtoull.obj (.text)
+                  800097c8    00000214                         : fd_add32.obj (.text)
+                  800099dc    000001f8                         : strtol.obj (.text)
+                  80009bd4    000001d8     util.obj (.text)
+                  80009dac    000001d4     rtsv5_A_le_eabi.lib : fputs.obj (.text)
+                  80009f80    000001bc                         : strtoul.obj (.text)
+                  8000a13c    00000190                         : fd_div32.obj (.text)
+                  8000a2cc    00000180                         : memcpy32.obj (.text)
+                  8000a44c    00000154     drivers.lib : psc.obj (.text)
+                  8000a5a0    00000154     rtsv5_A_le_eabi.lib : setvbuf.obj (.text)
+                  8000a6f4    00000144     platform.lib : uart.obj (.text)
+                  8000a838    00000134     rtsv5_A_le_eabi.lib : s_scalbn.obj (.text)
+                  8000a96c    00000130                         : fflush.obj (.text)
+                  8000aa9c    00000128                         : fd_mul32.obj (.text)
+                  8000abc4    00000118                         : _io_perm.obj (.text)
+                  8000acdc    00000114                         : i_div32.obj (.text)
+                  8000adf0    0000010c                         : fputc.obj (.text)
+                  8000aefc    000000fc                         : fclose.obj (.text)
+                  8000aff8    000000f0                         : _bufread.obj (.text)
+                  8000b0e8    000000f0                         : u_div32.obj (.text)
+                  8000b1d8    000000e0                         : fd_cmp32.obj (.text:__aeabi_cdcmple)
+                  8000b2b8    000000e0                         : fd_cmp32.obj (.text:__aeabi_cdrcmple)
+                  8000b398    000000e0                         : fgetc.obj (.text)
+                  8000b478    000000c8                         : ungetc.obj (.text)
+                  8000b540    000000b8     platform.lib : uartConsole.obj (.text)
+                  8000b5f8    000000b0     rtsv5_A_le_eabi.lib : memset32.obj (.text)
+                  8000b6a8    000000b0     system_config.lib : startup.obj (.text)
+                  8000b758    000000a8     rtsv5_A_le_eabi.lib : fseek.obj (.text)
+                  8000b800    000000a8                         : trgmsg.obj (.text)
+                  8000b8a8    000000a4                         : printf.obj (.text)
+                  8000b94c    000000a0                         : autoinit.obj (.text)
+                  8000b9ec    0000009c                         : copy_decompress_lzss.obj (.text:decompress:lzss)
+                  8000ba88    0000009c                         : fd_tos32.obj (.text)
+                  8000bb24    00000088                         : cpy_tbl.obj (.text)
+                  8000bbac    00000088                         : s_frexp.obj (.text)
+                  8000bc34    00000084                         : atoi.obj (.text)
+                  8000bcb8    00000080                         : ltoa.obj (.text)
+                  8000bd38    0000007c     system_config.lib : exceptionhandler.obj (.text)
+                  8000bdb4    00000068     crc16.obj (.text)
+                  8000be1c    00000060     system_config.lib : cpu.obj (.text)
+                  8000be7c    0000005c     rtsv5_A_le_eabi.lib : fd_toi32.obj (.text)
+                  8000bed8    00000048     platform.lib : syscfg.obj (.text)
+                  8000bf20    00000048     rtsv5_A_le_eabi.lib : strncpy.obj (.text)
+                  8000bf68    0000003c                         : i_tofd32.obj (.text)
+                  8000bfa4    0000002c                         : memchr.obj (.text)
+                  8000bfd0    0000002c                         : strrchr.obj (.text)
+                  8000bffc    00000028                         : memccpy.obj (.text)
+                  8000c024    00000028                         : strchr.obj (.text)
+                  8000c04c    00000028                         : strcmp.obj (.text)
+                  8000c074    00000024                         : _lock.obj (.text)
+                  8000c098    00000020                         : strlen.obj (.text)
+                  8000c0b8    0000001c                         : strcpy.obj (.text)
+                  8000c0d4    00000014                         : copy_decompress_none.obj (.text:decompress:none)
+                  8000c0e8    00000010                         : copy_zero_init.obj (.text:decompress:ZI)
+                  8000c0f8    00000010                         : s_copysign.obj (.text)
+                  8000c108    00000004                         : i_div0.obj (.text)
+                  8000c10c    00000004                         : startup.obj (.text)
+
+.bss       0    8000c110    000011d0     UNINITIALIZED
+                  8000c110    00001000     (.common:dest)
+                  8000d110    00000120     rtsv5_A_le_eabi.lib : trgmsg.obj (.bss:_CIOBUF_)
+                  8000d230    000000a0     (.common:__TI_tmpnams)
+                  8000d2d0    00000008                         : trgdrv.obj (.bss:parmbuf)
+                  8000d2d8    00000004     spiwriter.obj (.bss)
+                  8000d2dc    00000004     util.obj (.bss)
+
+.stack     0    8000d2e0    00001000     UNINITIALIZED
+                  8000d2e0    00001000     --HOLE--
+
+.sysmem    0    8000e2e0    00001000     UNINITIALIZED
+                  8000e2e0    00000008     rtsv5_A_le_eabi.lib : memory.obj (.sysmem)
+                  8000e2e8    00000ff8     --HOLE--
+
+.const     0    8000f2e0    000004e8     
+                  8000f2e0    00000200     crc16.obj (.const:crc16tab)
+                  8000f4e0    00000101     rtsv5_A_le_eabi.lib : ctype.obj (.const:.string:_ctypes_)
+                  8000f5e1    00000003     --HOLE-- [fill = 0]
+                  8000f5e4    0000009c     cmd.obj (.const:.string)
+                  8000f680    00000050     rtsv5_A_le_eabi.lib : strtod.obj (.const:digits)
+                  8000f6d0    00000048                         : strtod.obj (.const:powerof10)
+                  8000f718    00000038     system_config.lib : startup.obj (.const:vecTbl)
+                  8000f750    00000020     device.obj (.const:.string:LOCAL_bootModeLUT)
+                  8000f770    00000014     utils.lib : uartStdio.obj (.const:.string)
+                  8000f784    00000014     device_spi.obj (.const:DEVICE_SPI_MEM_params)
+                  8000f798    00000008     device_spi.obj (.const:DEVICE_SPI_baseAddr)
+                  8000f7a0    00000008     device_spi.obj (.const)
+                  8000f7a8    00000007     rtsv5_A_le_eabi.lib : _scanfi.obj (.const:.string:flit$1)
+                  8000f7af    00000006                         : _scanfi.obj (.const:.string:barr$2)
+                  8000f7b5    00000004     spi.obj (.const:DEFAULT_SPI_CONFIG)
+                  8000f7b9    00000004     device_spi.obj (.const:DEVICE_SPI_config)
+                  8000f7bd    00000003     --HOLE-- [fill = 0]
+                  8000f7c0    00000004     spi.obj (.const)
+                  8000f7c4    00000004     utils.lib : uartStdio.obj (.const)
+
+.data      0    8000f7c8    0000023c     UNINITIALIZED
+                  8000f7c8    000000f0     rtsv5_A_le_eabi.lib : defs.obj (.data:_ftable)
+                  8000f8b8    000000d0                         : lowlev.obj (.data:$O1$$)
+                  8000f988    00000018     cmd.obj (.data:cmd_discp)
+                  8000f9a0    00000018     cmd.obj (.data:uart0_cmd)
+                  8000f9b8    00000010     rtsv5_A_le_eabi.lib : defs.obj (.data)
+                  8000f9c8    00000010     cmd.obj (.data:uart0_CMD)
+                  8000f9d8    0000000c     rtsv5_A_le_eabi.lib : exit.obj (.data:$O1$$)
+                  8000f9e4    0000000c                         : memory.obj (.data:$O1$$)
+                  8000f9f0    00000008                         : _lock.obj (.data:$O1$$)
+                  8000f9f8    00000004                         : errno.obj (.data)
+                  8000f9fc    00000004                         : fopen.obj (.data)
+                  8000fa00    00000004     spiwriter.obj (.data)
+
+.cinit     0    8000fa08    000000c8     
+                  8000fa08    000000a1     (.cinit..data.load) [load image, compression = lzss]
+                  8000faa9    00000003     --HOLE-- [fill = 0]
+                  8000faac    0000000c     (__TI_handler_table)
+                  8000fab8    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  8000fac0    00000010     (__TI_cinit_table)
+
+.ddr_mem   0    8001f000    00001000     DSECT
+                  8001f000    00001000     --HOLE--
+
+MODULE SUMMARY
+
+       Module                     code    ro data   rw data
+       ------                     ----    -------   -------
+    .\spi_flash\
+       spiwriter.obj              2764    0         4104   
+       device.obj                 3900    32        0      
+       spi_mem.obj                2736    0         0      
+       spi.obj                    1708    8         0      
+       debug.obj                  644     0         0      
+       util.obj                   472     0         4      
+       device_spi.obj             0       40        0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     12224   80        4108   
+                                                           
+    .\user\
+       cmd.obj                    1024    156       64     
+       main.obj                   940     0         0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     1964    156       64     
+                                                           
+    .\xmodem\
+       xmodem.obj                 1216    0         0      
+       crc16.obj                  104     512       0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     1320    512       0      
+                                                           
+    C:/ti/OMAPL138_StarterWare_1_10_04_01/binary/armv5/cgt_ccs/omapl138/drivers/Debug/drivers.lib
+       uart.obj                   1520    0         0      
+       psc.obj                    340     0         0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     1860    0         0      
+                                                           
+    C:/ti/OMAPL138_StarterWare_1_10_04_01/binary/armv5/cgt_ccs/omapl138/evmOMAPL138/platform/Debug/platform.lib
+       uart.obj                   324     0         0      
+       uartConsole.obj            184     0         0      
+       syscfg.obj                 72      0         0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     580     0         0      
+                                                           
+    C:/ti/OMAPL138_StarterWare_1_10_04_01/binary/armv5/cgt_ccs/omapl138/system_config/Debug/system_config.lib
+       startup.obj                176     56        0      
+       init.obj                   148     0         0      
+       exceptionhandler.obj       124     0         0      
+       cpu.obj                    96      0         0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     544     56        0      
+                                                           
+    C:/ti/OMAPL138_StarterWare_1_10_04_01/binary/armv5/cgt_ccs/utils/Debug/utils.lib
+       uartStdio.obj              3168    24        0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     3168    24        0      
+                                                           
+    C:\ti\ti-cgt-arm_16.9.1.LTS\lib\rtsv5_A_le_eabi.lib
+       _printfi.obj               6688    0         0      
+       _scanfi.obj                3616    13        0      
+       memory.obj                 1596    0         12     
+       lowlev.obj                 1376    0         208    
+       trgdrv.obj                 1360    0         8      
+       strtod.obj                 832     152       0      
+       fscanf.obj                 784     0         0      
+       fopen.obj                  732     0         4      
+       strtoll.obj                720     0         0      
+       ull_div32.obj              696     0         0      
+       strtoull.obj               580     0         0      
+       fd_add32.obj               532     0         0      
+       strtol.obj                 504     0         0      
+       fputs.obj                  468     0         0      
+       trgmsg.obj                 168     0         288    
+       fd_cmp32.obj               448     0         0      
+       strtoul.obj                444     0         0      
+       defs.obj                   0       0         416    
+       fd_div32.obj               400     0         0      
+       memcpy32.obj               384     0         0      
+       setvbuf.obj                340     0         0      
+       s_scalbn.obj               308     0         0      
+       fflush.obj                 304     0         0      
+       fd_mul32.obj               296     0         0      
+       _io_perm.obj               280     0         0      
+       i_div32.obj                276     0         0      
+       fputc.obj                  268     0         0      
+       ctype.obj                  0       257       0      
+       fclose.obj                 252     0         0      
+       _bufread.obj               240     0         0      
+       u_div32.obj                240     0         0      
+       fgetc.obj                  224     0         0      
+       ungetc.obj                 200     0         0      
+       memset32.obj               176     0         0      
+       fseek.obj                  168     0         0      
+       printf.obj                 164     0         0      
+       autoinit.obj               160     0         0      
+       copy_decompress_lzss.obj   156     0         0      
+       fd_tos32.obj               156     0         0      
+       cpy_tbl.obj                136     0         0      
+       s_frexp.obj                136     0         0      
+       atoi.obj                   132     0         0      
+       ltoa.obj                   128     0         0      
+       fd_toi32.obj               92      0         0      
+       strncpy.obj                72      0         0      
+       i_tofd32.obj               60      0         0      
+       _lock.obj                  36      0         8      
+       memchr.obj                 44      0         0      
+       strrchr.obj                44      0         0      
+       memccpy.obj                40      0         0      
+       strchr.obj                 40      0         0      
+       strcmp.obj                 40      0         0      
+       strlen.obj                 32      0         0      
+       strcpy.obj                 28      0         0      
+       copy_decompress_none.obj   20      0         0      
+       copy_zero_init.obj         16      0         0      
+       s_copysign.obj             16      0         0      
+       exit.obj                   0       0         12     
+       errno.obj                  0       0         4      
+       i_div0.obj                 4       0         0      
+       startup.obj                4       0         0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     27656   422       960    
+                                                           
+       Heap:                      0       0         4096   
+       Stack:                     0       0         4096   
+       Linker Generated:          0       197       0      
+    +--+--------------------------+-------+---------+---------+
+       Grand Total:               49316   1447      13324  
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 8000fac0 records: 2, size/record: 8, table size: 16
+	.data: load addr=8000fa08, load size=000000a1 bytes, run addr=8000f7c8, run size=0000023c bytes, compression=lzss
+	.bss: load addr=8000fab8, load size=00000008 bytes, run addr=8000c110, run size=000011d0 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 8000faac records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+8000bd3c  ADDR_HIPVR1                    
+8000bd9c  AbortHandler                   
+8000b848  C$$IO$$                        
+8000be38  CPUAbortHandler                
+8000be1c  CPUSwitchToPrivilegedMode      
+8000be24  CPUSwitchToUserMode            
+8000be5c  CPUfiqd                        
+8000be6c  CPUfiqe                        
+8000be3c  CPUirqd                        
+8000be4c  CPUirqe                        
+80009318  DEBUG_printHexInt              
+80009334  DEBUG_printInt                 
+80009300  DEBUG_printString              
+8000936c  DEBUG_readChar                 
+80009388  DEBUG_readHexInt               
+80009350  DEBUG_readString               
+8000f7b5  DEFAULT_SPI_CONFIG             
+80002614  DEVICE_AsyncMemInit            
+8000244c  DEVICE_ExternalMemInit         
+80002818  DEVICE_I2CInit                 
+80001c34  DEVICE_LPSCTransition          
+80002108  DEVICE_PLL0Init                
+800022e4  DEVICE_PLL1Init                
+80001d78  DEVICE_PSCInit                 
+80002898  DEVICE_SDMMCInit               
+800026c0  DEVICE_SPIInit                 
+8000f784  DEVICE_SPI_MEM_params          
+8000f798  DEVICE_SPI_baseAddr            
+8000f7b9  DEVICE_SPI_config              
+8000294c  DEVICE_TIMER0Init              
+80002954  DEVICE_TIMER0Start             
+8000295c  DEVICE_TIMER0Status            
+80002958  DEVICE_TIMER0Stop              
+80002764  DEVICE_UARTInit                
+800020b8  DEVICE_bootMode                
+80001fe4  DEVICE_bootPeripheral          
+80001c10  DEVICE_chipRevIDType           
+800020e8  DEVICE_emifBusWidth            
+80001b20  DEVICE_init                    
+80001fc8  DEVICE_kickLock                
+80001fac  DEVICE_kickUnlock              
+80001d34  DEVICE_pinmuxControl           
+80020000  EXTERNAL_RAM_END               
+8001f000  EXTERNAL_RAM_START             
+80000000  Entry                          
+8000bd80  FIQHandler                     
+80007774  HOSTclock                      
+80007704  HOSTclose                      
+8000769c  HOSTgetenv                     
+800075fc  HOSTlseek                      
+80007570  HOSTopen                       
+800074ec  HOSTread                       
+80007454  HOSTrename                     
+800073f4  HOSTtime                       
+80007378  HOSTtime64                     
+80007314  HOSTunlink                     
+80007290  HOSTwrite                      
+8000bd64  IRQHandler                     
+8000a44c  PSCModuleControl               
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+80005b10  SPIDeceive_open                
+800052f8  SPI_MEM_eraseBytes             
+80005290  SPI_MEM_globalErase            
+80004fa8  SPI_MEM_open                   
+8000501c  SPI_MEM_readBytes              
+800051ec  SPI_MEM_verifyBytes            
+80005750  SPI_MEM_verifyErase            
+80005080  SPI_MEM_writeBytes             
+80005ed4  SPI_disableCS                  
+80005e90  SPI_enableCS                   
+80005a58  SPI_open                       
+80005b90  SPI_readBytes                  
+80005b58  SPI_reset                      
+80005c74  SPI_writeBytes                 
+80005d4c  SPI_xferBytes                  
+80005e2c  SPI_xferOneChar                
+8000bd44  SWIHandler                     
+8000bef4  SysCfgRegistersLock            
+8000bed8  SysCfgRegistersUnlock          
+80006c30  UARTBreakCtl                   
+80006b14  UARTCharGet                    
+80006adc  UARTCharGetNonBlocking         
+80006b4c  UARTCharPut                    
+80006a98  UARTCharPutNonBlocking         
+80006a48  UARTCharsAvail                 
+8000680c  UARTConfigGetExpClk            
+80006740  UARTConfigSetExpClk            
+8000b5d4  UARTConsoleGetc                
+8000b588  UARTConsoleInit                
+8000b5bc  UARTConsolePutc                
+80006908  UARTDMADisable                 
+800068e4  UARTDMAEnable                  
+800069b4  UARTDisable                    
+80006998  UARTEnable                     
+800069f8  UARTFIFODisable                
+800069dc  UARTFIFOEnable                 
+800068bc  UARTFIFOLevelSet               
+80003cd8  UARTGetHexNum                  
+80003c24  UARTGetNum                     
+80003f44  UARTGetc                       
+80003940  UARTGets                       
+80006bc0  UARTIntDisable                 
+80006b90  UARTIntEnable                  
+80006bf0  UARTIntStatus                  
+80006cc0  UARTModemControlClear          
+80006cf0  UARTModemControlGet            
+80006c7c  UARTModemControlSet            
+80006d0c  UARTModemStatusGet             
+80006970  UARTParityModeGet              
+8000692c  UARTParityModeSet              
+8000a6f4  UARTPinMuxSetup                
+80003af8  UARTPutHexNum                  
+800039fc  UARTPutNum                     
+80003f30  UARTPutc                       
+80003888  UARTPuts                       
+80006a7c  UARTRxErrorGet                 
+80006a14  UARTSpaceAvail                 
+8000387c  UARTStdioInit                  
+80003fc4  UARTprintf                     
+80003f50  UARTwrite                      
+80009bfc  UTIL_allocMem                  
+80009c70  UTIL_callocMem                 
+80009bd4  UTIL_getCurrMemPtr             
+80009ce0  UTIL_memcpy                    
+80009be0  UTIL_setCurrMemPtr             
+80009d44  UTIL_waitLoop                  
+80009d8c  UTIL_waitLoopAccurate          
+8000bd9c  UndefInstHandler               
+8000d110  __CIOBUF_                      
+8000e2e0  __STACK_END                    
+00001000  __STACK_SIZE                   
+00001000  __SYSMEM_SIZE                  
+8000fac0  __TI_CINIT_Base                
+8000fad0  __TI_CINIT_Limit               
+8000faac  __TI_Handler_Table_Base        
+8000fab8  __TI_Handler_Table_Limit       
+8000b94c  __TI_auto_init                 
+8000aff8  __TI_buff_read                 
+80008bdc  __TI_cleanup                   
+8000f9d8  __TI_cleanup_ptr               
+8000aefc  __TI_closefile                 
+8000b9ec  __TI_decompress_lzss           
+8000c0d4  __TI_decompress_none           
+8000a96c  __TI_doflush                   
+8000f9dc  __TI_dtors_ptr                 
+8000f9e0  __TI_enable_exit_profile_output
+8000f9b8  __TI_ft_end                    
+ffffffff  __TI_pprof_out_hndl            
+80000d60  __TI_printfi                   
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+8000ac64  __TI_rd_ok                     
+8000b850  __TI_readmsg                   
+80002a5c  __TI_scanfi                    
+8000fa08  __TI_static_base__             
+8000d230  __TI_tmpnams                   
+8000b800  __TI_writemsg                  
+8000abc4  __TI_wrt_ok                    
+8000c0e8  __TI_zero_init                 
+8000b1d8  __aeabi_cdcmpeq                
+8000b1d8  __aeabi_cdcmple                
+8000b2b8  __aeabi_cdrcmple               
+8000ba88  __aeabi_d2f                    
+8000be7c  __aeabi_d2iz                   
+800097d4  __aeabi_dadd                   
+8000a13c  __aeabi_ddiv                   
+8000aa9c  __aeabi_dmul                   
+800097c8  __aeabi_dsub                   
+8000bf68  __aeabi_i2d                    
+8000acdc  __aeabi_idiv                   
+8000c108  __aeabi_idiv0                  
+8000acdc  __aeabi_idivmod                
+8000b5f8  __aeabi_memclr                 
+8000b5f8  __aeabi_memclr4                
+8000b5f8  __aeabi_memclr8                
+8000a2cc  __aeabi_memcpy                 
+8000a2cc  __aeabi_memcpy4                
+8000a2cc  __aeabi_memcpy8                
+8000b5fc  __aeabi_memset                 
+8000b5fc  __aeabi_memset4                
+8000b5fc  __aeabi_memset8                
+8000f9c4  __aeabi_stderr                 
+8000f9bc  __aeabi_stdin                  
+8000f9c0  __aeabi_stdout                 
+8000b0e8  __aeabi_uidiv                  
+8000b0e8  __aeabi_uidivmod               
+80009048  __aeabi_uldivmod               
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+8000d2e0  __stack                        
+8000f4e0  _ctypes_                       
+8000f7c8  _ftable                        
+800077f8  _inbyte                        
+8000f9f0  _lock                          
+8000c08c  _nop                           
+800077e0  _outbyte                       
+8000c080  _register_lock                 
+8000c074  _register_unlock               
+8000e2e0  _sys_memory                    
+8000c10c  _system_post_cinit             
+8000f9f4  _unlock                        
+80007168  add_device                     
+8000bc34  atoi                           
+ffffffff  binit                          
+8000d2e0  bss_end                        
+8000c110  bss_start                      
+800066ec  calloc                         
+800070d0  close                          
+8000f988  cmd_discp                      
+8000bb24  copy_in                        
+8000c0f8  copysign                       
+8000c0f8  copysignl                      
+8000bdb4  crc16_ccitt                    
+8000c110  dest                           
+8000f9f8  errno                          
+8000afa8  fclose                         
+8000a9f0  fflush                         
+8000b398  fgetc                          
+80008c74  fopen                          
+8000adf0  fputc                          
+80009dac  fputs                          
+800062bc  free                           
+80008c28  freopen                        
+8000bbac  frexp                          
+8000bbac  frexpl                         
+800089f4  fscanf                         
+8000b758  fseek                          
+80007eb4  getAddr_length                 
+80007d10  getCMDlines                    
+8000b398  getc                           
+8000b464  getchar                        
+80007d98  getdownloaddata                
+80007ca0  gethelp                        
+8000f7c0  hDEFAULT_SPI_CONFIG            
+8000f7a4  hDEVICE_SPI_MEM_params         
+8000f7a0  hDEVICE_SPI_config             
+8000a838  ldexp                          
+8000a838  ldexpl                         
+80007088  lseek                          
+8000bcb8  ltoa                           
+800080a0  main                           
+800061fc  malloc                         
+800065a8  memalign                       
+8000bffc  memccpy                        
+8000bfa4  memchr                         
+8000a2cc  memcpy                         
+8000b608  memset                         
+80006104  minit                          
+80006f6c  open                           
+8000fa00  pcode                          
+8000b8b0  printf                         
+8000adf0  putc                           
+8000aee8  putchar                        
+80009f48  puts                           
+80006f24  read                           
+80006414  realloc                        
+80006e2c  remove                         
+80006ed8  remove_device                  
+80006e6c  rename                         
+8000a838  scalbn                         
+8000a838  scalbnl                        
+80008970  scanf                          
+8000a5a0  setvbuf                        
+80004968  spi_get_codelength             
+80004d74  spi_get_data                   
+800048ac  spi_set_codelength             
+80004a00  spi_witer_arm                  
+800049a8  spi_witer_dspcode              
+800044dc  spi_witer_init                 
+80004acc  spi_witer_load                 
+80004a5c  spi_witer_uboot                
+80004520  spiflash_eraseBytes            
+8000b6a8  start_boot                     
+8000c024  strchr                         
+8000c04c  strcmp                         
+8000c0b8  strcpy                         
+8000c098  strlen                         
+8000bf20  strncpy                        
+8000bfd0  strrchr                        
+8000844c  strtod                         
+800099dc  strtol                         
+8000844c  strtold                        
+80008d78  strtoll                        
+80009f80  strtoul                        
+80009584  strtoull                       
+8000f9a0  uart0_cmd                      
+8000b478  ungetc                         
+80006e2c  unlink                         
+800088fc  vfscanf                        
+8000888c  vscanf                         
+80006d30  write                          
+80007988  xmodemReceive                  
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00001000  __STACK_SIZE                   
+00001000  __SYSMEM_SIZE                  
+80000000  Entry                          
+80000d60  __TI_printfi                   
+80001b20  DEVICE_init                    
+80001c10  DEVICE_chipRevIDType           
+80001c34  DEVICE_LPSCTransition          
+80001d34  DEVICE_pinmuxControl           
+80001d78  DEVICE_PSCInit                 
+80001fac  DEVICE_kickUnlock              
+80001fc8  DEVICE_kickLock                
+80001fe4  DEVICE_bootPeripheral          
+800020b8  DEVICE_bootMode                
+800020e8  DEVICE_emifBusWidth            
+80002108  DEVICE_PLL0Init                
+800022e4  DEVICE_PLL1Init                
+8000244c  DEVICE_ExternalMemInit         
+80002614  DEVICE_AsyncMemInit            
+800026c0  DEVICE_SPIInit                 
+80002764  DEVICE_UARTInit                
+80002818  DEVICE_I2CInit                 
+80002898  DEVICE_SDMMCInit               
+8000294c  DEVICE_TIMER0Init              
+80002954  DEVICE_TIMER0Start             
+80002958  DEVICE_TIMER0Stop              
+8000295c  DEVICE_TIMER0Status            
+80002a5c  __TI_scanfi                    
+8000387c  UARTStdioInit                  
+80003888  UARTPuts                       
+80003940  UARTGets                       
+800039fc  UARTPutNum                     
+80003af8  UARTPutHexNum                  
+80003c24  UARTGetNum                     
+80003cd8  UARTGetHexNum                  
+80003f30  UARTPutc                       
+80003f44  UARTGetc                       
+80003f50  UARTwrite                      
+80003fc4  UARTprintf                     
+800044dc  spi_witer_init                 
+80004520  spiflash_eraseBytes            
+800048ac  spi_set_codelength             
+80004968  spi_get_codelength             
+800049a8  spi_witer_dspcode              
+80004a00  spi_witer_arm                  
+80004a5c  spi_witer_uboot                
+80004acc  spi_witer_load                 
+80004d74  spi_get_data                   
+80004fa8  SPI_MEM_open                   
+8000501c  SPI_MEM_readBytes              
+80005080  SPI_MEM_writeBytes             
+800051ec  SPI_MEM_verifyBytes            
+80005290  SPI_MEM_globalErase            
+800052f8  SPI_MEM_eraseBytes             
+80005750  SPI_MEM_verifyErase            
+80005a58  SPI_open                       
+80005b10  SPIDeceive_open                
+80005b58  SPI_reset                      
+80005b90  SPI_readBytes                  
+80005c74  SPI_writeBytes                 
+80005d4c  SPI_xferBytes                  
+80005e2c  SPI_xferOneChar                
+80005e90  SPI_enableCS                   
+80005ed4  SPI_disableCS                  
+80006104  minit                          
+800061fc  malloc                         
+800062bc  free                           
+80006414  realloc                        
+800065a8  memalign                       
+800066ec  calloc                         
+80006740  UARTConfigSetExpClk            
+8000680c  UARTConfigGetExpClk            
+800068bc  UARTFIFOLevelSet               
+800068e4  UARTDMAEnable                  
+80006908  UARTDMADisable                 
+8000692c  UARTParityModeSet              
+80006970  UARTParityModeGet              
+80006998  UARTEnable                     
+800069b4  UARTDisable                    
+800069dc  UARTFIFOEnable                 
+800069f8  UARTFIFODisable                
+80006a14  UARTSpaceAvail                 
+80006a48  UARTCharsAvail                 
+80006a7c  UARTRxErrorGet                 
+80006a98  UARTCharPutNonBlocking         
+80006adc  UARTCharGetNonBlocking         
+80006b14  UARTCharGet                    
+80006b4c  UARTCharPut                    
+80006b90  UARTIntEnable                  
+80006bc0  UARTIntDisable                 
+80006bf0  UARTIntStatus                  
+80006c30  UARTBreakCtl                   
+80006c7c  UARTModemControlSet            
+80006cc0  UARTModemControlClear          
+80006cf0  UARTModemControlGet            
+80006d0c  UARTModemStatusGet             
+80006d30  write                          
+80006e2c  remove                         
+80006e2c  unlink                         
+80006e6c  rename                         
+80006ed8  remove_device                  
+80006f24  read                           
+80006f6c  open                           
+80007088  lseek                          
+800070d0  close                          
+80007168  add_device                     
+80007290  HOSTwrite                      
+80007314  HOSTunlink                     
+80007378  HOSTtime64                     
+800073f4  HOSTtime                       
+80007454  HOSTrename                     
+800074ec  HOSTread                       
+80007570  HOSTopen                       
+800075fc  HOSTlseek                      
+8000769c  HOSTgetenv                     
+80007704  HOSTclose                      
+80007774  HOSTclock                      
+800077e0  _outbyte                       
+800077f8  _inbyte                        
+80007988  xmodemReceive                  
+80007ca0  gethelp                        
+80007d10  getCMDlines                    
+80007d98  getdownloaddata                
+80007eb4  getAddr_length                 
+800080a0  main                           
+8000844c  strtod                         
+8000844c  strtold                        
+8000888c  vscanf                         
+800088fc  vfscanf                        
+80008970  scanf                          
+800089f4  fscanf                         
+80008bdc  __TI_cleanup                   
+80008c28  freopen                        
+80008c74  fopen                          
+80008d78  strtoll                        
+80009048  __aeabi_uldivmod               
+80009300  DEBUG_printString              
+80009318  DEBUG_printHexInt              
+80009334  DEBUG_printInt                 
+80009350  DEBUG_readString               
+8000936c  DEBUG_readChar                 
+80009388  DEBUG_readHexInt               
+80009584  strtoull                       
+800097c8  __aeabi_dsub                   
+800097d4  __aeabi_dadd                   
+800099dc  strtol                         
+80009bd4  UTIL_getCurrMemPtr             
+80009be0  UTIL_setCurrMemPtr             
+80009bfc  UTIL_allocMem                  
+80009c70  UTIL_callocMem                 
+80009ce0  UTIL_memcpy                    
+80009d44  UTIL_waitLoop                  
+80009d8c  UTIL_waitLoopAccurate          
+80009dac  fputs                          
+80009f48  puts                           
+80009f80  strtoul                        
+8000a13c  __aeabi_ddiv                   
+8000a2cc  __aeabi_memcpy                 
+8000a2cc  __aeabi_memcpy4                
+8000a2cc  __aeabi_memcpy8                
+8000a2cc  memcpy                         
+8000a44c  PSCModuleControl               
+8000a5a0  setvbuf                        
+8000a6f4  UARTPinMuxSetup                
+8000a838  ldexp                          
+8000a838  ldexpl                         
+8000a838  scalbn                         
+8000a838  scalbnl                        
+8000a96c  __TI_doflush                   
+8000a9f0  fflush                         
+8000aa9c  __aeabi_dmul                   
+8000abc4  __TI_wrt_ok                    
+8000ac64  __TI_rd_ok                     
+8000acdc  __aeabi_idiv                   
+8000acdc  __aeabi_idivmod                
+8000adf0  fputc                          
+8000adf0  putc                           
+8000aee8  putchar                        
+8000aefc  __TI_closefile                 
+8000afa8  fclose                         
+8000aff8  __TI_buff_read                 
+8000b0e8  __aeabi_uidiv                  
+8000b0e8  __aeabi_uidivmod               
+8000b1d8  __aeabi_cdcmpeq                
+8000b1d8  __aeabi_cdcmple                
+8000b2b8  __aeabi_cdrcmple               
+8000b398  fgetc                          
+8000b398  getc                           
+8000b464  getchar                        
+8000b478  ungetc                         
+8000b588  UARTConsoleInit                
+8000b5bc  UARTConsolePutc                
+8000b5d4  UARTConsoleGetc                
+8000b5f8  __aeabi_memclr                 
+8000b5f8  __aeabi_memclr4                
+8000b5f8  __aeabi_memclr8                
+8000b5fc  __aeabi_memset                 
+8000b5fc  __aeabi_memset4                
+8000b5fc  __aeabi_memset8                
+8000b608  memset                         
+8000b6a8  start_boot                     
+8000b758  fseek                          
+8000b800  __TI_writemsg                  
+8000b848  C$$IO$$                        
+8000b850  __TI_readmsg                   
+8000b8b0  printf                         
+8000b94c  __TI_auto_init                 
+8000b9ec  __TI_decompress_lzss           
+8000ba88  __aeabi_d2f                    
+8000bb24  copy_in                        
+8000bbac  frexp                          
+8000bbac  frexpl                         
+8000bc34  atoi                           
+8000bcb8  ltoa                           
+8000bd3c  ADDR_HIPVR1                    
+8000bd44  SWIHandler                     
+8000bd64  IRQHandler                     
+8000bd80  FIQHandler                     
+8000bd9c  AbortHandler                   
+8000bd9c  UndefInstHandler               
+8000bdb4  crc16_ccitt                    
+8000be1c  CPUSwitchToPrivilegedMode      
+8000be24  CPUSwitchToUserMode            
+8000be38  CPUAbortHandler                
+8000be3c  CPUirqd                        
+8000be4c  CPUirqe                        
+8000be5c  CPUfiqd                        
+8000be6c  CPUfiqe                        
+8000be7c  __aeabi_d2iz                   
+8000bed8  SysCfgRegistersUnlock          
+8000bef4  SysCfgRegistersLock            
+8000bf20  strncpy                        
+8000bf68  __aeabi_i2d                    
+8000bfa4  memchr                         
+8000bfd0  strrchr                        
+8000bffc  memccpy                        
+8000c024  strchr                         
+8000c04c  strcmp                         
+8000c074  _register_unlock               
+8000c080  _register_lock                 
+8000c08c  _nop                           
+8000c098  strlen                         
+8000c0b8  strcpy                         
+8000c0d4  __TI_decompress_none           
+8000c0e8  __TI_zero_init                 
+8000c0f8  copysign                       
+8000c0f8  copysignl                      
+8000c108  __aeabi_idiv0                  
+8000c10c  _system_post_cinit             
+8000c110  bss_start                      
+8000c110  dest                           
+8000d110  __CIOBUF_                      
+8000d230  __TI_tmpnams                   
+8000d2e0  __stack                        
+8000d2e0  bss_end                        
+8000e2e0  __STACK_END                    
+8000e2e0  _sys_memory                    
+8000f4e0  _ctypes_                       
+8000f784  DEVICE_SPI_MEM_params          
+8000f798  DEVICE_SPI_baseAddr            
+8000f7a0  hDEVICE_SPI_config             
+8000f7a4  hDEVICE_SPI_MEM_params         
+8000f7b5  DEFAULT_SPI_CONFIG             
+8000f7b9  DEVICE_SPI_config              
+8000f7c0  hDEFAULT_SPI_CONFIG            
+8000f7c8  _ftable                        
+8000f988  cmd_discp                      
+8000f9a0  uart0_cmd                      
+8000f9b8  __TI_ft_end                    
+8000f9bc  __aeabi_stdin                  
+8000f9c0  __aeabi_stdout                 
+8000f9c4  __aeabi_stderr                 
+8000f9d8  __TI_cleanup_ptr               
+8000f9dc  __TI_dtors_ptr                 
+8000f9e0  __TI_enable_exit_profile_output
+8000f9f0  _lock                          
+8000f9f4  _unlock                        
+8000f9f8  errno                          
+8000fa00  pcode                          
+8000fa08  __TI_static_base__             
+8000faac  __TI_Handler_Table_Base        
+8000fab8  __TI_Handler_Table_Limit       
+8000fac0  __TI_CINIT_Base                
+8000fad0  __TI_CINIT_Limit               
+8001f000  EXTERNAL_RAM_START             
+80020000  EXTERNAL_RAM_END               
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+
+[293 symbols]
